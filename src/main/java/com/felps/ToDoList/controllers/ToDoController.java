@@ -2,13 +2,14 @@ package com.felps.ToDoList.controllers;
 
 import com.felps.ToDoList.entity.ToDo;
 import com.felps.ToDoList.services.ToDoService;
-import org.springframework.stereotype.Repository;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Repository
-@RestController("/todos")
+
+@RestController
+@RequestMapping("/todos")
 public class ToDoController {
 
     ToDoService toDoService;
@@ -18,22 +19,22 @@ public class ToDoController {
     }
 
     @PostMapping
-    public List<ToDo> create(@RequestBody ToDo toDo){
+    List<ToDo> create(@RequestBody @Valid ToDo toDo){
         return toDoService.create(toDo);
     }
 
     @GetMapping
-    public List<ToDo> List(){
+    List<ToDo> List(){
         return toDoService.list();
     }
 
     @PutMapping
-    public List<ToDo> update(@RequestBody ToDo toDo){
+    List<ToDo> update(@RequestBody ToDo toDo){
         return toDoService.update(toDo);
     }
 
     @DeleteMapping("/{id}")
-    public List<ToDo> delete(@PathVariable Long id){
+    List<ToDo> delete(@PathVariable Long id){
         return toDoService.delete(id);
     }
 }
