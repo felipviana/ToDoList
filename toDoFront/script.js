@@ -11,8 +11,9 @@ async function fetchTodos() {
 function renderTodos(todos){
     todoList.innerHTML = '';
     todos.forEach(todo => {
+        console.log(todo)
         const li = document.createElement('li');
-        li.textContent = '${todo.name} - ${todo.description} | Done : ${todo.done} | Priority: ${todo.priority}';
+        li.textContent = `${todo.name} - ${todo.description} | Done : ${todo.done} | Priority: ${todo.priority}`;
         todoList.appendChild(li);
     })
 }
@@ -30,7 +31,7 @@ async function addTodo(event){
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, description, done, priority}),
+        body: JSON.stringify({ name, description, done, priority})
     });
 
     if (response.ok){
