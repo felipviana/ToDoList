@@ -20,7 +20,7 @@ public class ToDo {
     private String name;
     private String description;
     private int priority;
-    private boolean done;
+    private Boolean done;
 
     @ManyToOne
     private Category category;
