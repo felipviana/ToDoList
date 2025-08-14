@@ -19,8 +19,8 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private String descricao;
+    private String name;
+    private String description;
 
     @OneToMany
     private List<ToDo> todo;

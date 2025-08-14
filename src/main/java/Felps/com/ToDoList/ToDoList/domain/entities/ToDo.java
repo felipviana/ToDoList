@@ -18,9 +18,9 @@ public class ToDo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String descricao;
-    private int prioridade;
-    private boolean realizada;
+    private String description;
+    private int priority;
+    private boolean done;
 
     @ManyToOne
     private Category category;
