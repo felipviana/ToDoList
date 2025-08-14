@@ -19,12 +19,17 @@ public class ToDoService {
         return toDoRepository.findAll();
     }
 
+    public ToDo getById(Long id){
+        return toDoRepository.getById(id);
+    }
+
     public List<ToDo> create(ToDo todo){
         toDoRepository.save(todo);
         return list();
     }
 
-    public List<ToDo> update(Long id, ToDo todo){
+
+    public ToDo update(Long id, ToDo todo){
         ToDo existingToDo = toDoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("ToDo not found!!"));
 
@@ -34,7 +39,7 @@ public class ToDoService {
         existingToDo.setDone(todo.getDone());
         existingToDo.setCategory(todo.getCategory());
         toDoRepository.save(existingToDo);
-        return list();
+        return existingToDo;
     }
 
     public List<ToDo> delete(Long id){

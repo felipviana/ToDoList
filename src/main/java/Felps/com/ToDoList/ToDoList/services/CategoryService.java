@@ -23,14 +23,14 @@ public class CategoryService {
         return list();
     }
 
-    public List<Category> update(Long id, Category category){
+    public Category update(Long id, Category category){
         Category existingCategory = categoryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Category not found!!"));
 
         existingCategory.setName(category.getName());
         existingCategory.setDescription(category.getDescription());
         categoryRepository.save(existingCategory);
-        return list();
+        return existingCategory;
     }
 
     public List<Category> delete(Long id){
